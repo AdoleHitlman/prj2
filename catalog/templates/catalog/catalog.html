@@ -1,17 +1,17 @@
-<!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<html lang="en" xmlns="http://www.w3.org/1999/html"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <h1>Skystore</h1>
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/AdoleHitlman/prj2/main/catalog/static/css/bootstrap.min.css">
-</head>
-<body>
+    </head><body><h1>Skystore</h1>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <nav class="ms-5">
-        <a class="p-2 btn btn-outline-primary" href="{% url 'home' %}">Каталог</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'contacts' %}">Контакты</a>
+        <a class="p-2 btn btn-outline-primary" href="/catalog/">Каталог</a>
+        <a class="p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>
     </nav>
 </div>
 <nav>
@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-12 col-md">
                 SkyStore
-                <small class="d-block mb-3 text-muted">&copy; 2023</small>
+                <small class="d-block mb-3 text-muted">© 2023</small>
             </div>
             <div class="col-6 col-md">
                 <h5>Категории</h5>
@@ -66,14 +66,23 @@
             <div class="col-6 col-md">
                 <h5>О нас</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="{% url 'contacts' %}">Контакты</a></li>
+                    <li><a class="text-muted" href="/catalog/">Контакты</a></li>
                 </ul>
             </div>
         </div>
     </footer>
 </div>
+  <h1>Products</h1>
+  {% for product in products %}
+    <div class="product-card">
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description|slice:":100" }}</p>
+      <p>Price: {{ product.price }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}
 
 <script src="/static/js/bootstrap.bundle.min.js"></script>
 </nav>
-</body>
-</html>
+
+</body></html>

@@ -57,7 +57,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [str(BASE_DIR / 'catalog' / 'templates' / 'catalog')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,12 +124,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR/"static/"
 STATICFILES_DIRS = [
     # Здесь вы можете добавить пути к вашим статическим файлам,
     # если они располагаются вне приложений
-    BASE_DIR/'catalog/static',
+    BASE_DIR/'',
 
     ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

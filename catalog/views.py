@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from catalog.models import Client
-
+from .models import Product
 # Create your views here.
 
 def contacts(request):
@@ -12,5 +12,9 @@ def contacts(request):
         Client.objects.create(name=name,phone=phone,message=message)
     return render(request, 'catalog/contacts.html')
 
-def home(request):
-    return render(request, 'catalog/home.html')
+def catalog(request):
+    return render(request, 'catalog/catalog.html')
+
+def product_detail(request, product_id):
+    product = Product.objects.get(id=product_id)
+    return render(request, 'product.html', {'product': product})
