@@ -15,6 +15,13 @@ def contacts(request):
 def catalog(request):
     return render(request, 'catalog/catalog.html')
 
-def product_detail(request, product_id):
-    product = Product.objects.get(id=product_id)
-    return render(request, 'product.html', {'product': product})
+def menu(request):
+    return render(request, 'catalog/menu.html')
+
+def base(request):
+    return render(request, 'catalog/base.html')
+
+
+def products(request):
+    products = Product.objects.all()  # здесь Product - ваша модель продукта
+    return render(request, 'product.html', {'products': products})
