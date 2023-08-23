@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'menu.html' %}
 
 {% block content %}
   <h1>{{ product.name }}</h1>
   <p>{{ product.description }}</p>
   <p>Price: {{ product.price }}</p>
+  <a class="p-2 btn btn-outline-primary" href="#">Купить</a>
   <!-- Add more details about the product as desired -->
 
 {% endblock %}

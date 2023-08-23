@@ -1,16 +1,15 @@
 <!doctype html>
-{%load static%}
 <html>
 <head>
     <meta charset="utf-8">
     <h1>Skystore</h1>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/AdoleHitlman/prj2/main/catalog/static/css/bootstrap.min.css">
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <nav class="ms-5">
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog' %}">Каталог</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'contacts' %}">Контакты</a>
+        {% include 'menu.html' %}
     </nav>
 </div>
 <nav>
@@ -81,17 +80,17 @@
                 <div class="col-6 col-md">
                     <h5>Категории</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="https://github.com/AdoleHitlman">Рассылки</a></li>
-                        <li><a class="text-muted" href="https://github.com/AdoleHitlman">Телеграм боты</a></li>
-                        <li><a class="text-muted" href="https://github.com/AdoleHitlman">Полезные утилиты</a></li>
-                        <li><a class="text-muted" href="https://github.com/AdoleHitlman">Веб-приложения</a></li>
-                        <li><a class="text-muted" href="https://github.com/AdoleHitlman">Микросервисы</a></li>
+                        <li><a class="text-muted" href="#">Рассылки</a></li>
+                        <li><a class="text-muted" href="#">Телеграм боты</a></li>
+                        <li><a class="text-muted" href="#">Полезные утилиты</a></li>
+                        <li><a class="text-muted" href="#">Веб-приложения</a></li>
+                        <li><a class="text-muted" href="#">Микросервисы</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md">
                     <h5>Дополнительно</h5>
                     <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="https://github.com/AdoleHitlman">Мы пишем</a></li>
+                        <li><a class="text-muted" href="#">Мы пишем</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md">
