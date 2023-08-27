@@ -30,5 +30,5 @@ def index(request):
 
 def product(request):
     products = Product.objects.all()
-    return render(request, 'product.html', {'catalog_product': products})
+    return render(request, 'catalog/product.html', {'product': products})
 

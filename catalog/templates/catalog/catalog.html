@@ -25,12 +25,12 @@
                 <div class="card mb-4 box-shadow">
                     <div class="row">
                         <h1>Товары</h1>
-                        {% for product in catalog_products %}
+                        {% for product in products %}
                         <div class="col-md-4">
-                            <h2>{{ product.name }}</h2>
-                            <p>{{ product.description|slice:":100" }}</p>
-                            <p>Price: {{ product.price }}</p>
-                            <p><a class="p-2 btn btn-outline-primary" href="#">Смотреть детали &raquo;</a></p>
+                            <h2>{{ catalog_product.name }}</h2>
+                            <p>{{ catalog_product.description|slice:":100" }}</p>
+                            <p>Price: {{ catalog_product.price }}</p>
+                            <p><a class="p-2 btn btn-outline-primary" href="{% url 'product' %}">Смотреть детали &raquo;</a></p>
                         </div>
                         {% endfor %}
                     </div>
