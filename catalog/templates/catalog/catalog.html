@@ -1,5 +1,6 @@
 {%load static%}
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+{% load mediapath %}
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,58 +22,59 @@
 
     <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="row text-center">
-            <div class="col-3">
+            <div class="col-12">
                 <div class="card mb-4 box-shadow">
-                    <div class="row">
-                        <h1>Товары</h1>
-                        {% for product in products %}
-                        <div class="col-md-4">
-                            <h2>{{ catalog_product.name }}</h2>
-                            <p>{{ catalog_product.description|slice:":100" }}</p>
-                            <p>Price: {{ catalog_product.price }}</p>
-                            <p><a class="p-2 btn btn-outline-primary" href="{% url 'product' %}">Смотреть детали &raquo;</a></p>
-                        </div>
-                        {% endfor %}
+                    {% for product in products %}
+                    <div>
+                        <h1>{{ product.name }}</h1>
+                        <h3>Цена:</h3>
+                        <h2>{{ product.price }}</h2>
+                        <h5>&nbsp;</h5>
+                        <h4>Описание:</h4>
+                        <h4>{{ product.description|truncatechars:100 }}</h4>
+                        <h4>Фото:</h4>
+                        <img src="{{ product.photo|mediapath }}"/>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-
-        <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <div class="row">
-                <h1>&nbsp;</h1>
-                <div class="col-12 col-md">
-                    SkyStore
-                    <small class="d-block mb-3 text-muted">© 2023</small>
-                    <h1>&nbsp;</h1>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Категории</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Рассылки</a></li>
-                        <li><a class="text-muted" href="#">Телеграм боты</a></li>
-                        <li><a class="text-muted" href="#">Полезные утилиты</a></li>
-                        <li><a class="text-muted" href="#">Веб-приложения</a></li>
-                        <li><a class="text-muted" href="#">Микросервисы</a></li>
-                        <h1>&nbsp;</h1>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Дополнительно</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Мы пишем</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h1>&nbsp;</h1>
-                    <h5>О нас</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="/contacts/">Контакты</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
     </div>
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+            <h1>&nbsp;</h1>
+            <div class="col-12 col-md">
+                SkyStore
+                <small class="d-block mb-3 text-muted">© 2023</small>
+                <h1>&nbsp;</h1>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Категории</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Рассылки</a></li>
+                    <li><a class="text-muted" href="#">Телеграм боты</a></li>
+                    <li><a class="text-muted" href="#">Полезные утилиты</a></li>
+                    <li><a class="text-muted" href="#">Веб-приложения</a></li>
+                    <li><a class="text-muted" href="#">Микросервисы</a></li>
+                    <h1>&nbsp;</h1>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Дополнительно</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Мы пишем</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h1>&nbsp;</h1>
+                <h5>О нас</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="/contacts/">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
 
     <script src="/static/js/bootstrap.bundle.min.js"></script>

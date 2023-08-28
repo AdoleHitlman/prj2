@@ -1,16 +1,27 @@
-<!DOCTYPE html>
 {%load static%}
-<html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
-  <title>Skystore</title>
-  <h1>Добро пожаловать в магазин Skystore</h1>
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+<body><h1>Добро пожаловать в магазин Skystore</h1>
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <nav class="ms-5">
-      {% include 'menu.html' %}
+    {% include 'menu.html' %}
+        <p>Company 2023</p>
     </nav>
 </div>
 </body>
 </html>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="/static/popper.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+

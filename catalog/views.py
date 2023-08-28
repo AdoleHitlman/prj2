@@ -17,7 +17,8 @@ def contacts(request):
 
 
 def catalog(request):
-    return render(request, 'catalog/catalog.html')
+    products = Product.objects.all()
+    return render(request, 'catalog/catalog.html', context={'products': products})
 
 
 def menu(request):
@@ -28,7 +29,6 @@ def index(request):
     return render(request, 'catalog/index.html')
 
 
-def product(request):
-    products = Product.objects.all()
-    return render(request, 'catalog/product.html', {'product': products})
-
+def product(request, product_id):
+    products = Product.objects.get(id=product_id)
+    return render(request, 'catalog/product.html', {'product': product})
