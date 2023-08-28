@@ -1,9 +1,22 @@
 {%load static%}
-<h1>Skystore</h1>
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="p-2 btn btn-outline-primary" href="{% url 'catalog' %}">Каталог</a>
-  <a class="p-2 btn btn-outline-primary" href="{% url 'contacts' %}">Контакты</a>
-  <a class="navbar-brand" href="/index/">На главную</a>
-  <!-- Add menu items as desired -->
+
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <nav class="ms-5">
+    </nav>
+</div>
+<nav>
+
+    <h1>Skystore</h1>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog' %}">Каталог</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'contacts' %}">Контакты</a>
+        <a class="navbar-brand" href="/index/">На главную</a>
+        <!-- Add menu items as desired -->
+    </nav>
 </nav>

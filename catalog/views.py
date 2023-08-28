@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from catalog.models import Client
 from catalog.models import Product
+import markdown
 
 
 # Create your views here.
@@ -26,7 +27,13 @@ def menu(request):
 
 
 def index(request):
-    return render(request, 'catalog/index.html')
+    with open('README.md', 'r') as file:
+        readme_content = file.read()
+        html_content1 = markdown.markdown(readme_content)
+    with open('requrements.txt', 'r') as file:
+        requrements_content = file.read()
+        html_content2 = markdown.markdown(requrements_content)
+    return render(request, 'catalog/index.html', context={"cont1":{'html_content1': html_content1},"cont2":{'html_content2': html_content2}})
 
 
 def product(request, product_id):
