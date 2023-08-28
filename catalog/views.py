@@ -30,5 +30,5 @@ def index(request):
 
 
 def product(request, product_id):
-    products = Product.objects.get(id=product_id)
+    product = Product.objects.get(id=product_id)
     return render(request, 'catalog/product.html', {'product': product})

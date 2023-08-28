@@ -43,6 +43,7 @@ p {
 
 /* Стили для ссылок */
 a {
+  font-size: 20px;
   color: #000;
   text-decoration: none;
 }

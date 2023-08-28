@@ -1,6 +1,14 @@
+{% load mediapath %}
+{% include 'menu.html' %}
 <div>
     <h1>{{ product.name }}</h1>
-    <p>Категория: {{ product.category }}</p>
-    <p>Цена: {{ product.price }}</p>
-    <p>Описание: {{ product.description }}</p>
+    <h3>Категория: {{ product.category }}</h3>
+    <h3>Цена: ${{ product.price }}</h3>
+    <h3>Описание: {{ product.description }}</h3>
+    <img src="{{ product.photo|mediapath }}"/>
+    <h5></h5>
+    <a class="p-2 btn btn btn-success" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Купить ${{ product.price }}</a>
+    <h5>________________________________________________</h5>
+    <p>Дата создания: {{ product.create_date }}</p>
+    <p>Дата последнего редактирования: {{ product.last_edit_date }}</p>
 </div>
