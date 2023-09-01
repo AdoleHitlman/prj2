@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% include 'menu.html' %}
+<body>
+<ul>
+  {% for blog in object_list %}
+    <li>{{ blog.title }}</li>
+  {% empty %}
+    <li>Нет опубликованых статей.</li>
+  {% endfor %}
+</ul>
+</body>

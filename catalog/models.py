@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from slugify import slugify
 
 
 # Create your models here.
@@ -22,7 +23,7 @@ class Product(models.Model):
     description = models.CharField(max_length=100, verbose_name='описание')
     photo = models.ImageField(upload_to='products/', verbose_name="изображение")
     category = models.CharField(max_length=100, verbose_name='категория')
-    price = models.IntegerField(default=0,verbose_name="цена")
+    price = models.IntegerField(default=0, verbose_name="цена")
     create_date = models.DateTimeField(default=timezone.now, verbose_name="дата создания")
     last_edit_date = models.DateTimeField(verbose_name="дата последнего изменения")
 
@@ -44,3 +45,31 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'категория'  # Настройка для наименования одного объекта
         verbose_name_plural = 'категории'  # Настройка для наименования набора объектов
+
+
+class Blog(models.Model):
+    title = models.CharField(max_length=100)
+    slug = models.CharField(max_length=100, unique=True, blank=True)
+    content = models.TextField()
+    preview = models.ImageField(upload_to='previews/')
+    created_date = models.DateTimeField(auto_now_add=True)
+    is_published = models.BooleanField(default=False)
+    views_count = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'{self.pk},{self.title}'
+
+    def save(self, *args, **kwargs):
+        # Автоматически генерируем slug из заголовка перед сохранением записи
+        self.slug = slugify(str(self.title))
+        super().save(*args, **kwargs)
+
+    class Meta:
+        ordering = ['-created_date']
+        verbose_name = 'Статья'  # Настройка для наименования одного объекта
+        verbose_name_plural = 'Статьи'  # Настройка для наименования набора объектов
+
+
+
+
+

@@ -1,6 +1,5 @@
 /* Обнуление стилей для всех элементов */
 * {
-  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -43,14 +42,35 @@ p {
 
 /* Стили для ссылок */
 a {
-  font-size: 20px;
-  color: #000;
+  outline: none;
   text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: #265301;
+}
+
+a:visited {
+  color: #437a16;
+}
+
+a:focus {
+  border-bottom: 1px solid;
+  background: #bae498;
 }
 
 a:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid;
+  background: #cdfeaa;
 }
+
+a:active {
+  background: #265301;
+  color: #cdfeaa;
+}
+
+
 
 /* Стили для изображений */
 img {
@@ -68,6 +88,20 @@ img {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+.btn-bd-primary {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+  --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
 }
 
 .button:hover {

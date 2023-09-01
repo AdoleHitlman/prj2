@@ -1,4 +1,5 @@
 markdown
+python-slugify
 ipython
 pillowp
 psycopg2
