@@ -6,7 +6,7 @@
 <nav>
     <form method="POST" action="{% url 'catalog' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form1.as_p }}
         <button type="submit">Создать новый продукт</button>
     </form>
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -32,6 +32,7 @@
                         {% for version in active_versions %}
                         {% if version.product == product %}
                         <p>Активная версия: {{ version.version_number }} - {{ version.version_name }}</p>
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'create_version' %}">Обновить версию<br /></a>
                         {% endif %}
                         {% endfor %}
 

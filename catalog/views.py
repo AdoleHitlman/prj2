@@ -6,6 +6,7 @@ from django.views.generic import DetailView, ListView, UpdateView
 
 from catalog.forms import BlogForm
 from catalog.forms import ProductForm
+from catalog.forms import VersionForm
 from catalog.models import Blog
 from catalog.models import Client
 from catalog.models import Product
@@ -42,6 +43,20 @@ class ContactsView(View):
         return render(request, 'catalog/contacts.html')
 
 
+class CreateVersionView(View):
+    def get(self,request):
+        form = VersionForm()
+        if form.is_valid():
+            form.save()
+        return render(request, 'create_version.html', {'form': form})
+
+    def post(self, request):
+        form = VersionForm()
+        if form.is_valid():
+            form.save()
+        return render(request, 'create_version.html', {'form': form})
+
+
 class CatalogView(View):
     def get(self, request):
         products = Product.objects.all()
@@ -54,7 +69,8 @@ class CatalogView(View):
             form.save()
             return redirect('catalog')
         products = Product.objects.all()
-        return render(request, 'catalog.html', {'products': products, 'form': form})
+        form1 = ProductForm()
+        return render(request, 'catalog.html', {'products': products, 'form1': form1})
 
 
 class IndexView(View):

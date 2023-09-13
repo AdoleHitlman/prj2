@@ -30,6 +30,10 @@ class Version(models.Model):
     version_name = models.CharField(max_length=100, verbose_name="Название версии")
     is_current_version = models.BooleanField(default=False, verbose_name="Текущая версия")
 
+    class Meta:
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версии'
+
 
 class Client(models.Model):
     name = models.CharField(max_length=100, verbose_name='имя')
