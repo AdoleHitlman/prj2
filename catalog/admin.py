@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from catalog.models import Client, Category, Product,Blog
+from catalog.models import Client, Category, Product,Blog,Version
 
 #admin.site.register(Blog)
 # Register your models here.
@@ -16,6 +16,12 @@ class ClientAdmin(admin.ModelAdmin):
     list_display = ('name', 'message')
     # list_filter =
     search_fields = ('name', 'message')
+
+@admin.register(Version)
+class VersionAdmin(admin.ModelAdmin):
+    list_display = ('product', 'version_number')
+    list_filter = ('product',)
+    search_fields = ('product', 'version_number')
 
 
 @admin.register(Product)

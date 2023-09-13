@@ -4,13 +4,27 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic import DetailView, ListView, UpdateView
 
+from catalog.forms import BlogForm
+from catalog.forms import ProductForm
 from catalog.models import Blog
 from catalog.models import Client
 from catalog.models import Product
-from catalog.forms import BlogForm
+from catalog.models import Version
 
 
 # Create your views here.
+class CreateProductView(View):
+
+    def get(self, request):
+        form = ProductForm()
+        return render(request, 'create_product.html', {'form': form})
+
+    def post(self, request):
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list')
+        return render(request, 'create_product.html', {'form': form})
 
 
 class ContactsView(View):
@@ -29,10 +43,18 @@ class ContactsView(View):
 
 
 class CatalogView(View):
-    @staticmethod
-    def get(request):
+    def get(self, request):
         products = Product.objects.all()
-        return render(request, 'catalog/catalog.html', {'products': products})
+        active_versions = Version.objects.filter(is_current_version=True)
+        return render(request, 'catalog.html', {'products': products, 'active_versions': active_versions})
+
+    def post(self, request):
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('catalog')
+        products = Product.objects.all()
+        return render(request, 'catalog.html', {'products': products, 'form': form})
 
 
 class IndexView(View):
@@ -60,7 +82,6 @@ class IndexView(View):
             return render(request, 'catalog/index.html', {'blogs': blogs, 'form': form})
 
 
-
 class ProductView(View):
     @staticmethod
     def get(request, product_id):
@@ -79,7 +100,6 @@ class BlogDetailView(DetailView):
         return super().get(request, *args, **kwargs)
 
 
-
 class PublishedBlogListView(ListView):
     model = Blog
 
@@ -90,8 +110,9 @@ class PublishedBlogListView(ListView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ['title', 'content','preview']
+    fields = ['title', 'content', 'preview']
     template_name = 'blog_update.html'
+
     def get_success_url(self):
         # Получаем URL страницы просмотра отредактированной статьи
         return reverse('blog-detail', kwargs={'pk': self.object.pk})

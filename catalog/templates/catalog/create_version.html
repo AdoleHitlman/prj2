@@ -1,0 +1,10 @@
+{% include 'menu.html' %}
+{% load mediapath %}
+<h2>{{ product.name }}</h2>
+<p>Описание: {{ product.description }}</p>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Создать версию</button>
+</form>
